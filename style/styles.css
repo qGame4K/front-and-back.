@@ -1,3 +1,4 @@
+/* ===== БАЗОВЫЕ СТИЛИ ===== */
 * {
     margin: 0;
     padding: 0;
@@ -10,19 +11,22 @@ body {
     color: #e0e0e0;
     background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #0c0c0c 100%);
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
     background-attachment: fixed;
 }
 
+/* ===== КОНТЕЙНЕР СТРАНИЦЫ ===== */
 .page-container {
-    display: flex;
-    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(10, 10, 10, 0.9);
     min-height: 100vh;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
 }
 
-/* Общие стили для хедера */
-.header, #header {
+/* ===== ШАПКА ===== */
+.header {
     background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #000000 100%);
     color: #00ffff;
     padding: 2rem;
@@ -32,7 +36,7 @@ body {
     overflow: hidden;
 }
 
-.header::before, #header::before {
+.header::before {
     content: '';
     position: absolute;
     top: 0;
@@ -43,55 +47,47 @@ body {
     animation: shimmer 3s infinite;
 }
 
-.header h1, #header h1, 
-body > h1:first-of-type {
-    font-size: 3rem;
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.header h1 {
+    font-size: 2.5rem;
     margin-bottom: 0.5rem;
-    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+    text-shadow: 0 0 10px #00ffff;
     font-weight: 300;
     letter-spacing: 2px;
 }
 
-.header p, #header p {
-    font-size: 1.2rem;
+.header p {
+    font-size: 1.1rem;
     opacity: 0.8;
     text-shadow: 0 0 5px #00ffff;
 }
 
-/* Общие стили для навигации */
-.nav, #menu {
+/* ===== НАВИГАЦИЯ ===== */
+.nav {
     background: rgba(0, 0, 0, 0.9);
     padding: 1rem 0;
     border-bottom: 1px solid #ff00ff;
     backdrop-filter: blur(10px);
 }
 
-.nav-list, #menu ul, 
-body > div:first-of-type ul {
+.nav-list {
     list-style: none;
     display: flex;
     justify-content: center;
+    gap: 1rem;
     flex-wrap: wrap;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
 }
 
-.nav-item, #menu li, 
-body > div:first-of-type li {
-    margin: 0;
-    position: relative;
-}
-
-.nav-link, #menu a, 
-body > div:first-of-type a {
+.nav-link {
     color: #00ffff;
     text-decoration: none;
-    padding: 1rem 2rem;
-    border-radius: 0;
-    transition: all 0.4s ease;
-    display: block;
+    padding: 0.8rem 1.5rem;
     border: 1px solid transparent;
+    transition: all 0.4s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 600;
@@ -99,204 +95,92 @@ body > div:first-of-type a {
     overflow: hidden;
 }
 
-.nav-link::before, #menu a::before, 
-body > div:first-of-type a::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
-    transition: left 0.5s;
-}
-
-.nav-link:hover, #menu a:hover, 
-body > div:first-of-type a:hover {
+.nav-link:hover {
     background: rgba(0, 255, 255, 0.1);
     border-color: #ff00ff;
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(255, 0, 255, 0.4);
     color: #ff00ff;
 }
 
-.nav-link:hover::before, #menu a:hover::before, 
-body > div:first-of-type a:hover::before {
-    left: 100%;
-}
-
-/* Общие стили для контента */
-.content, #content, 
-body > h1:first-of-type ~ * {
-    flex: 1;
-    padding: 3rem;
-    max-width: 1400px;
-    margin: 0 auto;
-    width: 100%;
+/* ===== ОСНОВНОЙ КОНТЕНТ ===== */
+.content {
+    padding: 2rem;
     background: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(5px);
     border-left: 1px solid #00ffff;
     border-right: 1px solid #00ffff;
 }
 
-/* Специальные стили для страницы practices.html */
-body > #menu + h1 {
-    text-align: center;
-    color: #ff00ff;
-    margin: 2rem auto;
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid #00ffff;
-    max-width: 1400px;
-    width: calc(100% - 6rem);
-}
-
-body > h1 + h2,
-body > h1 + p + h2,
-body > h1 + p + h3 {
-    max-width: 1400px;
-    margin: 1rem auto;
-    padding: 0 3rem;
-    color: #00ffff;
-}
-
-body > h1 + p,
-body > h2 + p,
-body > h3 + p,
-body > ul + p {
-    max-width: 1400px;
-    margin: 1rem auto;
-    padding: 0 3rem;
-}
-
-body > ul {
-    max-width: 1400px;
-    margin: 1rem auto;
-    padding: 1rem 3rem;
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid #ff00ff;
-    border-left: 5px solid #00ffff;
-}
-
-body > ul li {
-    margin: 0.5rem 0;
-    padding-left: 1rem;
-    position: relative;
-}
-
-body > ul li::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: #00ffff;
-}
-
-/* Общие стили для футера */
-.footer, #footer {
-    background: linear-gradient(135deg, #000000 0%, #1a1a2e 100%);
-    color: #00ffff;
-    text-align: center;
-    padding: 2rem;
-    margin-top: auto;
-    border-top: 2px solid #ff00ff;
-}
-
-.footer p, #footer p {
-    margin-bottom: 0.5rem;
-    text-shadow: 0 0 5px #00ffff;
-}
-
-/* Стили для главной страницы */
+/* ===== ГЛАВНАЯ СТРАНИЦА ===== */
 .profile-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     background: rgba(0, 0, 0, 0.6);
-    padding: 3rem;
+    padding: 2rem;
     border: 1px solid #00ffff;
     position: relative;
     overflow: hidden;
 }
 
-.profile-header::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent 40%, rgba(0, 255, 255, 0.1) 50%, transparent 60%);
-    animation: scan 4s linear infinite;
-}
-
 .profile-title {
     color: #ff00ff;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     text-shadow: 0 0 10px #ff00ff;
-    font-size: 2.5rem;
-    font-weight: 300;
+    font-size: 2rem;
 }
 
 .profile-photo {
-    border-radius: 50%;
-    margin: 2rem auto;
-    border: 3px solid #00ffff;
-    box-shadow: 0 0 20px #00ffff;
     width: 200px;
     height: 200px;
+    border-radius: 50%;
     object-fit: cover;
+    margin: 1rem auto;
+    border: 3px solid #00ffff;
+    box-shadow: 0 0 20px #00ffff;
     transition: all 0.4s ease;
 }
 
 .profile-photo:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     box-shadow: 0 0 30px #ff00ff;
     border-color: #ff00ff;
 }
 
 .profile-name {
     color: #00ffff;
-    margin: 2rem 0 1rem 0;
-    font-size: 2rem;
+    margin: 1rem 0;
+    font-size: 1.5rem;
     text-shadow: 0 0 10px #00ffff;
 }
 
 .profile-group {
     color: #888;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-style: italic;
 }
 
 .about-me {
     background: rgba(0, 0, 0, 0.7);
-    padding: 2rem;
-    margin-bottom: 3rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
     border: 1px solid #ff00ff;
     border-left: 5px solid #00ffff;
     position: relative;
 }
 
-.about-me::before {
-    content: '▶';
-    position: absolute;
-    left: -15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #00ffff;
-    font-size: 1.5rem;
-}
-
+/* ===== НАВЫКИ ===== */
 .skills-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
 }
 
 .skill-tag {
     background: linear-gradient(135deg, #000000 0%, #1a1a2e 100%);
     color: #00ffff;
-    padding: 1.5rem;
-    border-radius: 0;
+    padding: 1rem;
     text-align: center;
     transition: all 0.4s ease;
     border: 1px solid #00ffff;
@@ -305,34 +189,34 @@ body > ul li::before {
 }
 
 .skill-tag:hover {
-    transform: translateY(-5px) scale(1.05);
+    transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
     border-color: #ff00ff;
     color: #ff00ff;
 }
 
+/* ===== ОПЫТ РАБОТЫ ===== */
 .experience-section {
     background: rgba(0, 0, 0, 0.7);
-    padding: 3rem;
+    padding: 2rem;
     border: 1px solid #00ffff;
+    margin-top: 2rem;
 }
 
 .section-title {
     color: #ff00ff;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     text-align: center;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     text-shadow: 0 0 10px #ff00ff;
 }
 
 .experience-card {
     background: rgba(26, 26, 46, 0.6);
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-    border-radius: 0;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
     border-left: 4px solid #ff00ff;
     transition: all 0.3s ease;
-    position: relative;
 }
 
 .experience-card:hover {
@@ -342,67 +226,62 @@ body > ul li::before {
 
 .experience-title {
     color: #00ffff;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
 }
 
-/* Стили для товаров */
+/* ===== ТОВАРЫ ===== */
 .product-card {
     background: rgba(0, 0, 0, 0.8);
-    padding: 2rem;
-    margin: 1.5rem;
-    border-radius: 0;
+    padding: 1.5rem;
+    margin: 1rem;
     text-align: center;
     transition: all 0.4s ease;
     display: inline-block;
-    width: calc(33.333% - 3rem);
+    width: calc(33.333% - 2rem);
     vertical-align: top;
     border: 1px solid #00ffff;
     position: relative;
 }
 
-
-
 .product-card:hover {
-    transform: translateY(-10px) rotate(1deg);
+    transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 255, 255, 0.3);
     border-color: #ff00ff;
 }
 
 .product-card img {
-    border-radius: 0;
-    margin-bottom: 1.5rem;
-    max-width: 100%;
+    width: 100%;
     height: 200px;
     object-fit: cover;
+    margin-bottom: 1rem;
     border: 2px solid #00ffff;
     transition: all 0.3s ease;
 }
 
 .product-card:hover img {
     border-color: #ff00ff;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .product-card h3 {
     color: #ff00ff;
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
 }
 
 .product-card p {
     color: #00ffff;
     font-weight: bold;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     text-shadow: 0 0 5px #00ffff;
 }
 
-
+/* ===== НОВОСТИ ===== */
 .news-item {
     background: rgba(0, 0, 0, 0.7);
-    padding: 2.5rem;
-    margin-bottom: 2.5rem;
-    border-radius: 0;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
     border: 1px solid #00ffff;
     border-left: 5px solid #ff00ff;
     transition: all 0.3s ease;
@@ -415,35 +294,30 @@ body > ul li::before {
 
 .news-item h2 {
     color: #ff00ff;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     text-shadow: 0 0 5px #ff00ff;
 }
 
 .news-meta {
     color: #888;
     font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
     border-bottom: 1px solid #333;
 }
 
-.news-content p {
-    margin-bottom: 1rem;
-    line-height: 1.8;
-}
-
-
+/* ===== КОНТАКТЫ ===== */
 .contact-info {
     background: rgba(0, 0, 0, 0.7);
-    padding: 3rem;
-    border-radius: 0;
+    padding: 2rem;
     text-align: center;
     border: 1px solid #00ffff;
+    margin: 1.5rem 0;
 }
 
 .contact-info p {
-    margin-bottom: 2rem;
-    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
 }
 
 .contact-info strong {
@@ -455,38 +329,67 @@ body > ul li::before {
     background: linear-gradient(135deg, #000000 0%, #ff00ff 100%);
     color: #00ffff;
     border: none;
-    padding: 1.5rem 3rem;
-    border-radius: 0;
+    padding: 1rem 2rem;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1rem;
     transition: all 0.4s ease;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     position: relative;
     overflow: hidden;
 }
 
 .contact-info button:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
     color: #ffffff;
 }
 
-.contact-info button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.4), transparent);
-    transition: left 0.5s;
+/* ===== ФУТЕР ===== */
+.footer {
+    background: linear-gradient(135deg, #000000 0%, #1a1a2e 100%);
+    color: #00ffff;
+    text-align: center;
+    padding: 2rem;
+    margin-top: auto;
+    border-top: 2px solid #ff00ff;
 }
 
-.contact-info button:hover::before {
-    left: 100%;
+.footer p {
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 5px #00ffff;
 }
 
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 768px) {
+    .nav-list {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    
+    .product-card {
+        width: calc(100% - 2rem);
+        margin: 0.5rem;
+    }
+    
+    .content {
+        padding: 1rem;
+    }
+    
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+    }
+}
 
 
 
