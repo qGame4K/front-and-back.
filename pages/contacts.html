@@ -1,38 +1,390 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакты - Семестровая работа</title>
     <link rel="stylesheet" href="../style/styles.css">
+    <style>
+        /* Стили для модального окна в едином стиле */
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        dialog {
+            border: none;
+            padding: 0;
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.3);
+            animation: slideIn 0.3s ease;
+            max-width: 500px;
+            width: 90vw;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: rgba(10, 10, 10, 0.95);
+            border: 2px solid #00ffff;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #000000 0%, #1a1a2e 100%);
+            color: #00ffff;
+            padding: 1.5rem;
+            margin: 0;
+            border-bottom: 1px solid #ff00ff;
+            text-align: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: #00ffff;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px #00ffff;
+            font-weight: 300;
+        }
+
+        .modal-content {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #00ffff;
+            text-shadow: 0 0 5px #00ffff;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #00ffff;
+            background: rgba(0, 0, 0, 0.8);
+            color: #e0e0e0;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff00ff;
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #000000 0%, #ff00ff 100%);
+            color: #00ffff;
+            border: 1px solid #ff00ff;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 0, 255, 0.6);
+            color: #ffffff;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #000000 0%, #1a1a2e 100%);
+            color: #00ffff;
+            border: 1px solid #00ffff;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 255, 255, 0.1);
+            border-color: #ff00ff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+            color: #ff00ff;
+        }
+
+        .required {
+            color: #ff00ff;
+            text-shadow: 0 0 5px #ff00ff;
+        }
+
+        /* Центрирование контента на странице */
+        #content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+            padding: 2rem;
+        }
+
+        .contact-info {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 3rem;
+            border: 1px solid #00ffff;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info strong {
+            color: #ff00ff;
+            text-shadow: 0 0 5px #ff00ff;
+        }
+
+        .contact-button {
+            background: linear-gradient(135deg, #000000 0%, #ff00ff 100%);
+            color: #00ffff;
+            border: none;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin: 0.5rem;
+            border: 1px solid #ff00ff;
+        }
+
+        .contact-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
+            color: #ffffff;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            dialog {
+                margin: 1rem;
+                width: calc(100vw - 2rem);
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .contact-info {
+                padding: 2rem 1rem;
+                margin: 1rem;
+            }
+        }
+
+        /* Стили для placeholder */
+        ::placeholder {
+            color: #888;
+            opacity: 1;
+        }
+
+        :-ms-input-placeholder {
+            color: #888;
+        }
+
+        ::-ms-input-placeholder {
+            color: #888;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="header">
-        <h1>Контакты</h1>
-        <p>Свяжитесь с нами</p>
-    </div>
-
-    <nav class="nav">
-        <ul class="nav-list">
-            <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-            <li class="nav-item"><a class="nav-link" href="news.html">Новости</a></li>
-            <li class="nav-item"><a class="nav-link" href="practices.html">Практики</a></li>
-            <li class="nav-item"><a class="nav-link" href="goods.html">Товары</a></li>
-            <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
-        </ul>
-    </nav>
-
-    <div id="content">
-        <div class="contact-info">
-            <p><strong>Адрес электронной почты:</strong>gamegame05@mail.ru</p>
-            <p><strong>Адрес:</strong> г. Москва, ул. Пушкина, д. Колотушкина</p>
-            <button onclick="window.location.href='tel:+789898989'">Позвоните мне</button>
+    <div class="page-container">
+        <div class="header">
+            <h1>Контакты</h1>
+            <p>Свяжитесь с нами</p>
         </div>
-    </div>
 
-    <div id="footer">
-        <p>&copy; 2025 Семестровая работа. Все права защищены.</p>
-        <p>Контакты: nope | Телефон: +798989889</p>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
+                <li class="nav-item"><a class="nav-link" href="news.html">Новости</a></li>
+                <li class="nav-item"><a class="nav-link" href="practices.html">Практики</a></li>
+                <li class="nav-item"><a class="nav-link" href="goods.html">Товары</a></li>
+                <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+
+        <div id="content">
+            <div class="contact-info">
+                <p><strong>Адрес электронной почты:</strong> gamegame05@mail.ru</p>
+                <p><strong>Адрес:</strong> г. Москва, ул. Пушкина, д. Колотушкина</p>
+                <button class="contact-button" onclick="window.location.href='tel:+789898989'">Позвоните мне</button>
+                <button class="contact-button" onclick="contactModal.showModal()">Связаться с нами</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 Семестровая работа. Все права защищены.</p>
+            <p>Контакты: nope | Телефон: +798989889</p>
+        </div>
+
+        <dialog id="contactModal">
+            <div class="modal-header">
+                <h2>Форма обратной связи</h2>
+            </div>
+
+            <div class="modal-content">
+                <form id="feedbackForm" method="dialog">
+                    <div class="form-group">
+                        <label for="name">Имя <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Телефон <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Электронная почта <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder="example@mail.ru">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Категория обращения <span class="required">*</span></label>
+                        <select id="category" name="category" required>
+                            <option value="">Выберите категорию</option>
+                            <option value="technical">Техническая поддержка</option>
+                            <option value="commercial">Коммерческое предложение</option>
+                            <option value="cooperation">Сотрудничество</option>
+                            <option value="complaint">Жалоба</option>
+                            <option value="suggestion">Предложение</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Текст обращения <span class="required">*</span></label>
+                        <textarea id="message" name="message" required
+                            placeholder="Опишите вашу проблему или вопрос..."></textarea>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="submit" class="btn btn-secondary">Отмена</button>
+                        <button type="button" class="btn btn-primary" onclick="submitForm()">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </dialog>
+
+        <script>
+            // Функция для отправки формы
+            function submitForm() {
+                const form = document.getElementById('feedbackForm');
+                const formData = new FormData(form);
+
+                // Простая валидация
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+
+                // Собираем данные формы
+                const data = {
+                    name: formData.get('name'),
+                    phone: formData.get('phone'),
+                    email: formData.get('email'),
+                    category: formData.get('category'),
+                    message: formData.get('message')
+                };
+
+                // В реальном приложении здесь был бы AJAX-запрос
+                console.log('Данные формы:', data);
+
+                // Показываем уведомление об успешной отправке
+                alert('Спасибо! Ваше обращение отправлено. Мы свяжемся с вами в ближайшее время.');
+
+                // Закрываем модальное окно
+                contactModal.close();
+
+                // Очищаем форму
+                form.reset();
+            }
+
+            // Закрытие модального окна по клику на фон
+            document.getElementById('contactModal').addEventListener('click', function (event) {
+                if (event.target === this) {
+                    this.close();
+                }
+            });
+
+            // Обработка отправки формы через Enter (предотвращаем стандартное поведение)
+            document.getElementById('feedbackForm').addEventListener('keypress', function (event) {
+                if (event.key === 'Enter' && event.target.type !== 'textarea') {
+                    event.preventDefault();
+                }
+            });
+
+            // Автофокус на первом поле при открытии модального окна
+            document.getElementById('contactModal').addEventListener('close', function() {
+                document.getElementById('name').focus();
+            });
+        </script>
     </div>
 </body>
+
 </html>
