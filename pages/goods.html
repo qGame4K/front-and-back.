@@ -1,51 +1,118 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Товары - Семестровая работа</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../style/styles.css">
 </head>
-<body>
-    <div class="page-container">
-    <div class="header">
-        <h1>Каталог товаров</h1>
-        <p>Лучшие товары по выгодным ценам</p>
-    </div>
 
-    
-   <nav class="nav">
-        <ul class="nav-list">
-            <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-            <li class="nav-item"><a class="nav-link" href="news.html">Новости</a></li>
-            <li class="nav-item"><a class="nav-link" href="practices.html">Практики</a></li>
-            <li class="nav-item"><a class="nav-link" href="goods.html">Товары</a></li>
-            <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
-        </ul>
+<body class="page">
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container">
+            <h1 class="header__title">Каталог товаров</h1>
+            <p class="header__subtitle">Лучшие товары по выгодным ценам</p>
+        </div>
+    </header>
+
+    <!-- Навигационная панель -->
+    <nav class="nav">
+        <div class="container">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a class="nav__link" href="../index.html">Главная</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="news.html">Новости</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="practices.html">Практики</a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="goods.html">Товары</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="contacts.html">Контакты</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
-    <div id="content">
-        <div class="product-card">
-            <img src="../images/vid-na-trehmernuu-pticu-aviatora.jpg" alt="Товар 1" width="200" height="200">
-            <h3>Лоховской пингвин</h3>
-            <p>Цена: 1000 руб.</p>
-        </div>
-        <div class="product-card">
-            <img src="../images/vid-na-trehmernuu-mul-tasnuu-pticu.jpg" alt="Товар 2" width="200" height="200">
-            <h3>Крутой попугай</h3>
-            <p>Цена: 1500 руб.</p>
-        </div>
-        <div class="product-card">
-            <img src="../images/golubaa-ptica-3d-illustracia.jpg" alt="Товар 3" width="200" height="200">
-            <h3>Долоровый воробэй</h3>
-            <p>Цена: 2000 руб.</p>
-        </div>
-    </div>
+    <!-- Основной контент -->
+    <main class="main">
+        <div class="container">
+            <!-- Карточки товаров -->
+            <div id="content">
+                <!-- Товар 1 -->
+                <div class="card">
+                    <img src="../images/vid-na-trehmernuu-pticu-aviatora.jpg" class="card-img-top" alt="Лоховской пингвин">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Лоховской пингвин</h5>
+                        <p class="card-text flex-grow-1">Уникальный экземпляр пингвина с необычным окрасом и характером. Идеально подходит для коллекционеров.</p>
+                        <div class="mt-auto">
+                            <p class="card-text fw-bold fs-4">Бесценен</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn--primary">В корзину</button>
+                                <button class="btn btn--secondary">Подробнее</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <div id="footer">
-        <p>&copy; 2025 Семестровая работа. Все права защищены.</p>
-        <p>Контакты: nope  | Телефон: +798989898989</p>
-    </div>
-    </div>
+                <!-- Товар 2 -->
+                <div class="card">
+                    <img src="../images/vid-na-trehmernuu-mul-tasnuu-pticu.jpg" class="card-img-top" alt="Крутой попугай">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Крутой попугай</h5>
+                        <p class="card-text flex-grow-1">Яркий и говорящий попугай с уникальными способностями. Отлично подходит для семьи и развлечений.</p>
+                        <div class="mt-auto">
+                            <p class="card-text fw-bold fs-4">1500 руб.</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn--primary">В корзину</button>
+                                <button class="btn btn--secondary">Подробнее</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 3 -->
+                <div class="card">
+                    <img src="../images/golubaa-ptica-3d-illustracia.jpg" class="card-img-top" alt="Долоровый воробей">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Долоровый воробей</h5>
+                        <p class="card-text flex-grow-1">Здоровый и активный воробей с прекрасными вокальными данными. Отличный выбор для начинающих орнитологов.</p>
+                        <div class="mt-auto">
+                            <p class="card-text fw-bold fs-4">2000 руб.</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn--primary">В корзину</button>
+                                <button class="btn btn--secondary">Подробнее</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__text">&copy; 2025 Семестровая работа. Все права защищены.</p>
+            <p class="footer__contacts">Контакты: nope | Телефон: +798989898989</p>
+            <div class="mt-3">
+                <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
+
 </html>

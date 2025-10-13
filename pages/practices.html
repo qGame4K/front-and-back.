@@ -1,54 +1,62 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Практики</title>
     <link rel="stylesheet" href="../style/styles.css">
 </head>
-
 <body>
-    <div class="page-container">
-        <div class="header">
-            <h1>Мои практики</h1>
-            <p>достижения и практики которыми я владею</p>
-        </div>
+    <div class="page">
+        <header class="header">
+            <h1 class="header__title">Мои практики</h1>
+            <p class="header__subtitle">Достижения и практики которыми я владею</p>
+        </header>
 
         <nav class="nav">
-            <ul class="nav-list">
-                <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="news.html">Новости</a></li>
-                <li class="nav-item"><a class="nav-link" href="practices.html">Практики</a></li>
-                <li class="nav-item"><a class="nav-link" href="goods.html">Товары</a></li>
-                <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a class="nav__link" href="../index.html">Главная</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="news.html">Новости</a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="practices.html">Практики</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="goods.html">Товары</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="contacts.html">Контакты</a>
+                </li>
             </ul>
         </nav>
 
-        <div id="content">
-            <div class="news-item">
-                <h2>Создал тесовый сайт</h2>
-                <p>https://qgame4k.github.io/project1/</p>
-            </div>
-        </div>
-        <div id="content">
-            <div class="news-item">
-                <h2>Достижения:</h2>
-                <ul>
-                    <li>От злости хлопнул дверью лифта</li>
-                    <li>Однажды прописал оперкот корове и тогда появился жираф</li>
-                    <li>Звоню в 911 чтоб спросить всё ли у них в порядке</li>
-                </ul>
-            </div>
-        </div>
+        <main class="main">
+            <section class="content">
+                <article class="content__item">
+                    <h2 class="content__title">Создал тестовый сайт</h2>
+                    <p class="content__text">https://qgame4k.github.io/project1/</p>
+                </article>
+            </section>
 
+            <section class="content">
+                <article class="content__item">
+                    <h2 class="content__title">Достижения:</h2>
+                    <ul class="content__list">
+                        <li class="content__list-item">От злости хлопнул дверью лифта</li>
+                        <li class="content__list-item">Однажды прописал оперкот корове и тогда появился жираф</li>
+                        <li class="content__list-item">Звоню в 911 чтоб спросить всё ли у них в порядке</li>
+                    </ul>
+                </article>
+            </section>
+        </main>
 
-        <div class="footer">
-            <p>&copy; 2025 Семестровая работа. Все права защищены.</p>
-            <p>Контакты: nope | Телефон: +798989889</p>
-        </div>
+        <footer class="footer">
+            <p class="footer__text">&copy; 2025 Семестровая работа. Все права защищены.</p>
+            <p class="footer__contacts">Контакты: nope | Телефон: +798989889</p>
+        </footer>
     </div>
 </body>
-
-
 </html>

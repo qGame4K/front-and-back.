@@ -1,77 +1,103 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Семестровая работа</title>
+    <title>Главная - Портфолио</title>
     <link rel="stylesheet" href="style/styles.css">
 </head>
-
 <body>
-    <div class="page-container">
+    <!-- Основной контейнер -->
+    <div class="page">
+        
+        <!-- Шапка -->
         <header class="header">
-            <h1>Хэдер</h1>
+            <h1 class="header__title">Моё портфолио</h1>
         </header>
 
+        <!-- Навигация -->
         <nav class="nav">
-            <ul class="nav-list">
-                <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages/news.html">Новости</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages/practices.html">Практики</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages/goods.html">Товары</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages/contacts.html">Контакты</a></li>
+            <ul class="nav__list">
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="index.html">Главная</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="pages/news.html">Новости</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="pages/goods.html">Товары</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="pages/practices.html">Практики</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="pages/contacts.html">Контакты</a>
+                </li>
             </ul>
         </nav>
 
-        <main class="content">
-            <article class="profile-header">
-                <h1 class="profile-title">Информация об авторе</h1>
-                <img class="profile-photo" src="images/milyi-kot-v-studii.jpg" alt="Фото автора">
-                <h2 class="profile-name">Лебедев Иван Михайлович</h2>
-                <p class="profile-group">ЭФБО-11-24</p>
-            </article>
-
-            <section class="about-me">
-                <h2>Обо мне</h2>
-                <p>Обо мне: Я родился в Саранске в 2006-м. бла бла бла садик --- школа -- вуз с тяжестью сейчас преживаю
-                    детский периол ведь первые 40 лет детсва мужчины самые трудные</p>
+        <!-- Основной контент -->
+        <main class="main">
+            
+            <!-- Профиль -->
+            <section class="profile">
+                <div class="profile__card">
+                    <img class="profile__photo" src="images/milyi-kot-v-studii.jpg" alt="Фото">
+                    <div class="profile__info">
+                        <h2 class="profile__name">Лебедев Иван Михайлович</h2>
+                        <p class="profile__group">ЭФБО-11-24</p>
+                    </div>
+                </div>
             </section>
-
-            <section class="skills-container">
-                <h2>Мои навыки</h2>
-                <div class="skills-grid">
-                    <div class="skill-tag">Навык 1:Вижу лучше слепого</div>
-                    <div class="skill-tag">Навык 2:Бегаю быстрее младенца</div>
-                    <div class="skill-tag">Навык 3:Умнее амёбы(я так думаю)</div>
-                    <div class="skill-tag">Навык 4:Выше шанс сломать ногу чем у облака</div>
+            
+            <!-- Обо мне -->
+            <section class="about">
+                <h2 class="about__title">Обо мне</h2>
+                <div class="about__content">
+                    <p class="about__text">
+                        Я родился в Саранске в 2006-м. бла бла бла садик --- школа -- вуз с тяжестью сейчас преживаю
+                        детский периол ведь первые 40 лет детсва мужчины самые трудные
+                    </p>
+                </div>
+            </section>
+            
+            <!-- Навыки -->
+            <section class="skills">
+                <h2 class="skills__title">Мои навыки</h2>
+                <div class="skills__list">
+                    <div class="skill skill--html">
+                        <span class="skill__name">Навык 1:Вижу лучше слепого</span>
+                    </div>
+                    <div class="skill skill--css">
+                        <span class="skill__name">Навык 2:Бегаю быстрее младенца</span>
+                    </div>
+                    <div class="skill skill--js">
+                        <span class="skill__name">Навык 3:Умнее амёбы(я так думаю)</span>
+                    </div>
+                </div>
+            </section>
+            
+    
+            <section class="projects">
+                <h2 class="projects__title">Проекты</h2>
+                <div class="projects__grid">
+                    <div class="project-card">
+                        <h3 class="project-card__title">Личный сайт</h3>
+                        <p class="project-card__desc">Сайт-портфолио на HTML и CSS</p>
+                    </div>
+                    <div class="project-card">
+                        <h3 class="project-card__title">Невидимое приложение</h3>
+                        <p class="project-card__desc">Прикол его в том что его некто не видел</p>
+                    </div>
                 </div>
             </section>
 
-            <section class="experience-section">
-                <h2 class="section-title">Мой опыт работы</h2>
-                <div class="experience-grid">
-                    <article class="experience-card">
-                        <h3 class="experience-title">Опыт 1</h3>
-                        <p class="experience-desc">Работал дома над собой</p>
-                    </article>
-                    <article class="experience-card">
-                        <h3 class="experience-title">Опыт 2</h3>
-                        <p class="experience-desc">Работал курьером(легальным)</p>
-                    </article>
-                    <article class="experience-card">
-                        <h3 class="experience-title">Опыт 3</h3>
-                        <p class="experience-desc">Работал никем. И очень преуспел в этом</p>
-                    </article>
-                </div>
-
-            </section>
         </main>
 
+        <!-- Подвал -->
         <footer class="footer">
-            <p>2025 Семестровая работа. Все права защищены</p>
+            <p class="footer__text">&copy; 2025 Семестровая работа. Все права защищены</p>
         </footer>
     </div>
 </body>
-
 </html>
